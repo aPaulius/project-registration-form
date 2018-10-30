@@ -1,0 +1,28 @@
+{% macro baseField(view) %}
+    <div class="form-group row">
+        {{ form_label(view, null, {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        <div class="col-sm-10">
+            {{ form_widget(view, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+
+    {{ form_errors(view) }}
+{% endmacro %}
+
+{% macro measureField(view) %}
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">{{ view.vars.data.measureValue.name }}</label>
+        <div class="col-sm-10">
+            <div class="input-group m-b">
+                {{ form_widget(view.value, {'attr': {'class': 'form-control'}}) }}
+                <div class="input-group-append">
+                    <span class="input-group-addon">m<sup>2</sup>, kw</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="measure-value-error">
+        {{ form_errors(view.value) }}
+    </div>
+{% endmacro %}

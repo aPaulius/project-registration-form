@@ -1,0 +1,44 @@
+{% extends '@App/base.html.twig' %}
+
+{% from '@App/macro/fields.html.twig' import moneyField %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="tabs-container">
+            <div class="tab-content">
+                <div class="tab-pane active">
+                    <div class="panel-body">
+
+                        <fieldset>
+
+                            {% for measure in project.projectMeasureValues %}
+                                {{ moneyField(measure.name, measure.rate) }}
+                            {% endfor %}
+
+                            {{ moneyField('Suma', project.totalRate) }}
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <a href="{{ path('project_pdf', {'project': project.id}) }}" class="btn btn-primary">PDF</a>
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <div class="alert alert-warning mt-3">
+                            <p>Nebuvo pateika formulė, kaip apskaičiuoti investicijų sumą.
+                               Atvaizduoju priemonių tarifus ir jų bendrą sumą.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

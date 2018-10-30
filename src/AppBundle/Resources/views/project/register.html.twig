@@ -1,0 +1,58 @@
+{% extends '@App/base.html.twig' %}
+
+{% form_theme form '@App/theme/form_errors.html.twig' %}
+
+{% from '@App/macro/formFields.html.twig' import baseField, measureField %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="tabs-container">
+            <div class="tab-content">
+                <div class="tab-pane active">
+                    <div class="panel-body">
+
+                        {{ form_start(form) }}
+
+                        <fieldset>
+
+                            {{ baseField(form.user.firstName) }}
+                            {{ baseField(form.user.lastName) }}
+                            {{ baseField(form.user.address) }}
+                            {{ baseField(form.user.email) }}
+                            {{ baseField(form.user.phone) }}
+                            {{ baseField(form.user.houseNumber) }}
+                            {{ baseField(form.user.hasCompensation) }}
+
+                            {{ baseField(form.measure) }}
+
+                            <div id="project_measureValues">
+                                {% for projectMeasureValue in form.projectMeasureValues %}
+                                    {{ measureField(projectMeasureValue) }}
+                                {% endfor %}
+                            </div>
+
+                            {{ baseField(form.createdAt) }}
+
+                            <hr>
+
+                            <button class="btn btn-primary float-right">Registruoti</button>
+
+                        </fieldset>
+
+                        {{ form_end(form) }}
+
+                        <div class="alert alert-warning mt-3">
+                            <strong>Informacija</strong>
+                            <p>Čia pateikiama informacija apie pareiškėjų prisiimamus įsipareigojimus.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

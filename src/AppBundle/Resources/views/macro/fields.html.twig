@@ -1,0 +1,17 @@
+{% macro baseField(label, value) %}
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">{{ label }}:</label>
+        <div class="col-sm-10">
+            {{ value }}
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro moneyField(label, amount) %}
+    {% import _self as _ %}
+
+    {{ _.baseField(
+        label,
+        (amount / 100)|number_format(2) ~ '€'
+    ) }}
+{% endmacro %}
