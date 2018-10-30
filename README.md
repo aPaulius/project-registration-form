@@ -3,7 +3,7 @@ Project registration form
 ![Alt text](assets/img/project_registration_form.png)
 
 ## Setup
-[Install wkhtmltopdf link](https://wkhtmltopdf.org)
+[Install wkhtmltopdf](https://wkhtmltopdf.org)
 
 [Enable imagick extension](http://php.net/manual/en/book.imagick.php)
 ```
